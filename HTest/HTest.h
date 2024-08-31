@@ -35,8 +35,7 @@ public:
    // Members:
 
    // Output.
-   char mOutString[cMaxStringSize];
-   int mOutSize;
+   char mInString[cMaxStringSize];
 
    //***************************************************************************
    //***************************************************************************
@@ -63,9 +62,7 @@ public:
    bool doTest();
 
    void doRun1();
-   void doRun2();
    void doGenOut1();
-   void doGenOut2();
 
 };
 

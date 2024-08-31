@@ -29,13 +29,11 @@ HTest::HTest()
 
 void HTest::reset()
 {
-   mOutString[0] = 0;
-   mOutSize = 8;
+   mInString[0] = 0;
 }
 
 void HTest::show()
 {
-   puts(mOutString);
 }
 
 //******************************************************************************
@@ -45,29 +43,6 @@ void HTest::show()
 
 void HTest::doGenOut1()
 {
-   for (int i = 0; i < mOutSize; i++)
-   {
-      int k = mRandomDigitIndex(mRandomGen);
-      mOutString[i] = cDigitMap[k];
-      //Prn::print(0, "some %d %d $ %d", i, k, mOutString[i]);
-   }
-   mOutString[mOutSize] = 0;
-}
-
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-// Generate output.
-
-void HTest::doGenOut2()
-{
-   for (int i = 0; i < mOutSize; i++)
-   {
-      int k = mRandomAlphaIndex(mRandomGen);
-      mOutString[i] = cLowerMap[k];
-      //Prn::print(0, "some %d %d $ %d", i, k, mOutString[i]);
-   }
-   mOutString[mOutSize] = 0;
 }
 
 //******************************************************************************
@@ -77,18 +52,6 @@ void HTest::doGenOut2()
 
 bool HTest::doTest()
 {
-   puts(mOutString);
-   int tIndex = 0;
-   while (true)
-   {
-      int tChar = _getch();
-      if (tChar == 27) return false;
-      if (tChar == mOutString[tIndex])
-      {
-         putchar(tChar);
-         if (++tIndex == mOutSize) break;
-      }
-   }
    return true;
 }
 
@@ -99,33 +62,30 @@ bool HTest::doTest()
 
 void HTest::doRun1()
 {
+   printf("start\n");
+
+   int tValue = 0;
+   int tCount = 0;
+   int tRet = 0;
    while (true)
    {
-      doGenOut1();
-      if (!doTest())
+      printf("here    %d  $  ", tCount++);
+
+      // Input an integer. This does a CRLF to the next line.
+      tRet = scanf("%d", &tValue);
+      // Test for exit.
+      if (tRet == 0)
       {
-         printf("done\n");
+         printf("\r\ndone\n");
          return;
       }
-      printf("\n");
+      // Goto the beginning of the previous line, clear it, 
+      // and return to the beginning of it.
+      printf("\033[F\r                                     \r");
    }
 }
 
-//******************************************************************************
-//******************************************************************************
-//******************************************************************************
-// Run test.
-
-void HTest::doRun2()
-{
-   while (true)
-   {
-      doGenOut2();
-      if (!doTest())
-      {
-         printf("done\n");
-         return;
-      }
-      printf("\n");
-   }
-}
+// \033[A move cursor up on line
+// \033[F move cursor to the beginning of the previous line
+// \n linefeed
+// \r carriage return 

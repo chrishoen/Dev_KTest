@@ -60,7 +60,7 @@ void CmdLineExec::executeRun1(Ris::CmdLineCmd* aCmd)
 
 void CmdLineExec::executeRun2(Ris::CmdLineCmd* aCmd)
 {
-   gHTest.doRun2();
+//   gHTest.doRun2();
 }
 
 //******************************************************************************
