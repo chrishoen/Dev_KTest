@@ -18,7 +18,11 @@ my_show_cmake_vars()
 
 add_subdirectory ("RisLib")
 add_subdirectory ("CommonLib")
-add_subdirectory ("KTest")
+add_subdirectory ("HTest")
 return()
 
+add_subdirectory ("RisLib")
+add_subdirectory ("CommonLib")
+add_subdirectory ("KTest")
+return()
 
