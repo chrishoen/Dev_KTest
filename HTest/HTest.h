@@ -45,8 +45,7 @@ public:
    // Random number generator for random timer delay.
    std::random_device mRandomDevice;
    std::mt19937       mRandomGen;
-   std::uniform_int_distribution<> mRandomDigitIndex;
-   std::uniform_int_distribution<> mRandomAlphaIndex;
+   std::uniform_int_distribution<> mRandomInt;
 
    //***************************************************************************
    //***************************************************************************
@@ -62,6 +61,7 @@ public:
    bool doTest();
 
    void doRun1();
+   void doRun2();
    void doGenOut1();
 
 };
