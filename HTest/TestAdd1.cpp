@@ -52,28 +52,31 @@ void TestAdd1::doTest()
       int tValue3 = tValue1 + tValue2;
       int tInput = 0;
       int tRet = 0;
-
+      char tString[100];
       printf("%3d + %3d $  ", tValue1, tValue2);
 
-      // Input an integer. This does a CRLF to the next line.
-      tRet = scanf("%d", &tInput);
+      // Input a string at the cursor.
+      fgets(tString, 99, stdin);
+      if (strlen(tString) == 0)
+      {
+         printf("done\n");
+         return;
+      }
+
+      // Get an integer value from the string.
+      tRet = sscanf(tString, "%d", &tInput);
       // Test for exit.
       if (tRet == 0)
       {
-         printf("\r\ndone\n");
+         printf("done\n");
          return;
       }
+
+      // Test the value.
       if (tInput != tValue3)
       {
          printf("fail\n");
       }
-      // Goto the beginning of the previous line, clear it, 
-      // and return to the beginning of it.
-//    printf("\033[F\r                                     \r");
    }
 }
 
-// \033[A move cursor up on line
-// \033[F move cursor to the beginning of the previous line
-// \n linefeed
-// \r carriage return 
