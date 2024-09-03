@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include "string.h"
 
+#include "someAlphaParms.h"
 #include "HTest.h"
 #include "CmdLineExec.h"
 
@@ -43,6 +44,8 @@ void CmdLineExec::execute(Ris::CmdLineCmd* aCmd)
    if (aCmd->isCmd("GO4"))    executeGo4(aCmd);
    if (aCmd->isCmd("GO5"))    executeGo5(aCmd);
    if (aCmd->isCmd("GO6"))    executeGo6(aCmd);
+
+   if (aCmd->isCmd("PARMS"))  executeParms(aCmd);
 }
 
 //******************************************************************************
@@ -142,3 +145,13 @@ void CmdLineExec::executeGo6(Ris::CmdLineCmd* aCmd)
 {
 }
 
+//******************************************************************************
+//******************************************************************************
+//******************************************************************************
+
+void CmdLineExec::executeParms(Ris::CmdLineCmd* aCmd)
+{
+   Some::gAlphaParms.reset();
+   Some::gAlphaParms.readSection("default");
+   Some::gAlphaParms.show();
+}

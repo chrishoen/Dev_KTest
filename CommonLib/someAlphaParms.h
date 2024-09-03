@@ -46,7 +46,7 @@ namespace Some
 // structure. If so, then this class is the root.
 // 
 
-class MemoryParms : public Ris::BaseCmdLineParms
+class AlphaParms : public Ris::BaseCmdLineParms
 {
 public:
 
@@ -62,63 +62,9 @@ public:
    //***************************************************************************
    // Members.
 
-   // Main thread timer period.
-   int mTimerPeriod;
-
-   // Addresses.
-   unsigned mAddress1;
-   int mNumPages1;
-   unsigned mOffset1;
-
-   //***************************************************************************
-   //***************************************************************************
-   //***************************************************************************
-   // Members. KMod.
-
-   // Device path.
-   char mDevPath[cMaxStringSize];
-
-   // Test codes.
-   int mTestCode1;
-   int mTestCode2;
-
-   //***************************************************************************
-   //***************************************************************************
-   //***************************************************************************
-   // Members. Periodic.
-
-   // Processor variables.
-   int  mTestThreadProcessor;
-   int  mTestThreadPriority;
-   bool mPollProcessor;
-
-   // Timer thread variables.
-   int  mTestThreadPeriodUs;
-   int  mMonitorThreadPeriod;
-   int  mStatPeriod;
-   int  mPeriodUs;
-
-   // Random thread variables.
-   int  mIntervalMeanMs;
-   int  mIntervalRandomUs;
-
-   //***************************************************************************
-   //***************************************************************************
-   //***************************************************************************
-   // Members.
-
-   // If true then use high process priority.
-   bool mHighProcess;
-
-   // If true then enable print view and initialize it with the
-   // given ip address. Print view routes debug prints from the
-   // backend threads to print view consoles on a host.
-   bool mPrintViewEnable;
-   char mPrintViewIPAddress[30];
-
-   // Trace variables.
-   bool mTraceLogEnable;
-   bool mTraceLogVerbose;
+   // Bounds.
+   int mN1;
+   int mN2;
 
    //***************************************************************************
    //***************************************************************************
@@ -132,7 +78,7 @@ public:
 
    // Constructor,
    typedef Ris::BaseCmdLineParms BaseClass;
-   MemoryParms();
+   AlphaParms();
    void reset() override;
    void show();
 
@@ -151,10 +97,10 @@ public:
 //******************************************************************************
 // Global instance.
 
-#ifdef _SOMEMEMORYPARMS_CPP_
-   MemoryParms gMemoryParms;
+#ifdef _SOMEALPHAPARMS_CPP_
+   AlphaParms gAlphaParms;
 #else
-   extern MemoryParms gMemoryParms;
+   extern AlphaParms gAlphaParms;
 #endif
 
 //******************************************************************************
