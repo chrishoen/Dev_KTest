@@ -43,8 +43,7 @@ public:
    // Members:
 
    // Random number generator for random timer delay.
-   std::random_device mRandomDevice;
-   std::mt19937       mRandomGen;
+   std::default_random_engine mRandomGen;
    std::uniform_int_distribution<> mRandomInt;
 
    //***************************************************************************

@@ -10,6 +10,8 @@ Description:
 #include <conio.h>
 #include <ctype.h>
 
+#include "someAlphaParms.h"
+
 #define  _HTEST_CPP_
 #include "HTest.h"
 
@@ -19,9 +21,6 @@ Description:
 // Constructor
 
 HTest::HTest()
-   :
-   mRandomGen(mRandomDevice()),
-   mRandomInt(0, 99)
 {
    reset();
 }
@@ -29,6 +28,11 @@ HTest::HTest()
 void HTest::reset()
 {
    mInString[0] = 0;
+   std::random_device tDev;
+   std::seed_seq tSeed{ tDev(), tDev(), tDev(), tDev(), tDev(), tDev() };
+   mRandomGen.seed(tSeed);
+   mRandomInt.reset();
+   mRandomInt.param(std::uniform_int_distribution<>::param_type(0, Some::gAlphaParms.mN1));
 }
 
 void HTest::show()
@@ -62,7 +66,7 @@ bool HTest::doTest()
 void HTest::doRun1()
 {
    printf("start\n");
-   mRandomGen.seed();
+   reset();
 
    int tChar;
    int tValue = 0;
