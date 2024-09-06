@@ -1,71 +1,72 @@
 #pragma once
 
 /*==============================================================================
-Program command line executive.
 ==============================================================================*/
 
 //******************************************************************************
 //******************************************************************************
 //******************************************************************************
 
-#include "risCmdLineExec.h"
+#include <random>
 
 //******************************************************************************
 //******************************************************************************
 //******************************************************************************
-// This class is the program command line executive. It processes user
-// command line inputs and executes them. It inherits from the command line
-// command executive base class, which provides an interface for executing
-// command line commands. It provides an override execute function that is
-// called by a console executive when it receives a console command line input.
-// The execute function then executes the command.
+// This class implements a general purpose shared storage object. It contains
+// status counters and flags.
 
-class CmdLineExec : public Ris::BaseCmdLineExec
+class TestAdd2
 {
 public:
 
    //***************************************************************************
    //***************************************************************************
    //***************************************************************************
-   // Members.
+   // Constants.
+
+   static const int cMaxStringSize = 100;
 
    //***************************************************************************
    //***************************************************************************
    //***************************************************************************
-   // Infrastructure.
+   // Members:
 
-   CmdLineExec();
-   void reset() override;
-
-   //***************************************************************************
-   //***************************************************************************
-   //***************************************************************************
-   // Methods.
-
-   // Base class override. Execute a command line command. It calls one of
-   // the following specific command execution functions. This is called by
-   // the owner of this object to pass command line commands to it. 
-   void execute(Ris::CmdLineCmd* aCmd) override;
+   // Output.
+   char mInString[cMaxStringSize];
 
    //***************************************************************************
    //***************************************************************************
    //***************************************************************************
-   // Methods.
+   // Members:
 
-   // Execute specific commands.
-   void executeRun1(Ris::CmdLineCmd* aCmd);
-   void executeAdd1(Ris::CmdLineCmd* aCmd);
-   void executeAdd2(Ris::CmdLineCmd* aCmd);
+   // Random number generator for random timer delay.
+   std::default_random_engine mRandomGen;
+   std::uniform_int_distribution<> mRandomInt1;
+   std::uniform_int_distribution<> mRandomInt2;
 
-   void executeGo1(Ris::CmdLineCmd* aCmd);
-   void executeGo2(Ris::CmdLineCmd* aCmd);
-   void executeGo3(Ris::CmdLineCmd* aCmd);
-   void executeGo4(Ris::CmdLineCmd* aCmd);
-   void executeGo5(Ris::CmdLineCmd* aCmd);
-   void executeGo6(Ris::CmdLineCmd* aCmd);
+   //***************************************************************************
+   //***************************************************************************
+   //***************************************************************************
+   // Methods:
 
-   void executeParms(Ris::CmdLineCmd* aCmd);
+   // Constructor.
+   TestAdd2();
+   void reset();
+
+   // Tests.
+   void doTest();
 };
+
+//******************************************************************************
+//******************************************************************************
+//******************************************************************************
+// Global instance
+
+#ifdef _TESTADD2_CPP_
+          TestAdd2 gTestAdd2;
+#else
+   extern TestAdd2 gTestAdd2;
+#endif
 
 //******************************************************************************
 //******************************************************************************

@@ -9,6 +9,7 @@
 #include "someAlphaParms.h"
 #include "HTest.h"
 #include "TestAdd1.h"
+#include "TestAdd2.h"
 #include "CmdLineExec.h"
 
 //******************************************************************************
@@ -38,6 +39,7 @@ void CmdLineExec::execute(Ris::CmdLineCmd* aCmd)
    if(aCmd->isCmd("RESET"))   reset();
    if (aCmd->isCmd("RUN1"))   executeRun1(aCmd);
    if (aCmd->isCmd("ADD1"))   executeAdd1(aCmd);
+   if (aCmd->isCmd("ADD2"))   executeAdd2(aCmd);
 
    if (aCmd->isCmd("GO1"))    executeGo1(aCmd);
    if (aCmd->isCmd("GO2"))    executeGo2(aCmd);
@@ -65,6 +67,11 @@ void CmdLineExec::executeRun1(Ris::CmdLineCmd* aCmd)
 void CmdLineExec::executeAdd1(Ris::CmdLineCmd* aCmd)
 {
    gTestAdd1.doTest();
+}
+
+void CmdLineExec::executeAdd2(Ris::CmdLineCmd* aCmd)
+{
+   gTestAdd2.doTest();
 }
 
 //******************************************************************************
