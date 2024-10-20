@@ -51,10 +51,10 @@ public:
 
    // Constructor.
    TestAdd2();
-   void reset();
+   void reset(int aN1, int aN2);
 
    // Tests.
-   void doTest();
+   void doTest(int aN1, int aN2);
 };
 
 //******************************************************************************

@@ -71,7 +71,12 @@ void CmdLineExec::executeAdd1(Ris::CmdLineCmd* aCmd)
 
 void CmdLineExec::executeAdd2(Ris::CmdLineCmd* aCmd)
 {
-   gTestAdd2.doTest();
+   aCmd->setArgDefault(1, 99);
+   aCmd->setArgDefault(2, 99);
+   int tN1 = aCmd->argInt(1);
+   int tN2 = aCmd->argInt(2);
+
+   gTestAdd2.doTest(tN1, tN2);
 }
 
 //******************************************************************************
@@ -80,17 +85,6 @@ void CmdLineExec::executeAdd2(Ris::CmdLineCmd* aCmd)
 
 void CmdLineExec::executeGo1(Ris::CmdLineCmd* aCmd)
 {
-   CONSOLE_FONT_INFOEX tInfo;
-   memset(&tInfo, 0, sizeof(tInfo));
-   tInfo.cbSize = sizeof(tInfo);
-   HANDLE tHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-   if (!GetCurrentConsoleFontEx(tHandle, FALSE, &tInfo))
-   {
-      Prn::print(0, "FAIL %d", GetLastError());
-   }
-   Prn::print(0, "dwFontSize.X %d", tInfo.dwFontSize.X);
-   Prn::print(0, "dwFontSize.Y %d", tInfo.dwFontSize.Y);
-   Prn::print(0, "dwFontSize.Y %d", tInfo.nFont);
 }
 
 //******************************************************************************
@@ -99,26 +93,6 @@ void CmdLineExec::executeGo1(Ris::CmdLineCmd* aCmd)
 
 void CmdLineExec::executeGo2(Ris::CmdLineCmd* aCmd)
 {
-   CONSOLE_FONT_INFOEX tInfo;
-   memset(&tInfo, 0, sizeof(tInfo));
-   tInfo.cbSize = sizeof(tInfo);
-   HANDLE tHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-   if (!GetCurrentConsoleFontEx(tHandle, FALSE, &tInfo))
-   {
-      Prn::print(0, "FAIL1 %d", GetLastError());
-   }
-   Prn::print(0, "dwFontSize.X %d", tInfo.dwFontSize.X);
-   Prn::print(0, "dwFontSize.Y %d", tInfo.dwFontSize.Y);
-   Prn::print(0, "dwFontSize.Y %d", tInfo.nFont);
-
-
-   tInfo.dwFontSize.X = 24;
-   tInfo.dwFontSize.Y = 32;
-   if (!SetCurrentConsoleFontEx(tHandle, FALSE, &tInfo))
-   {
-      Prn::print(0, "FAIL2 %d", GetLastError());
-   }
-   Prn::print(0, "done");
 }
 
 //******************************************************************************
@@ -159,7 +133,4 @@ void CmdLineExec::executeGo6(Ris::CmdLineCmd* aCmd)
 
 void CmdLineExec::executeParms(Ris::CmdLineCmd* aCmd)
 {
-   Some::gAlphaParms.reset();
-   Some::gAlphaParms.readSection("default");
-   Some::gAlphaParms.show();
 }

@@ -10,8 +10,6 @@ Description:
 #include <conio.h>
 #include <ctype.h>
 
-#include "someAlphaParms.h"
-
 #define  _TESTADD2_CPP_
 #include "TestAdd2.h"
 
@@ -22,19 +20,19 @@ Description:
 
 TestAdd2::TestAdd2()
 {
-   reset();
+   reset(9, 9);
 }
 
-void TestAdd2::reset()
+void TestAdd2::reset(int aN1, int aN2)
 {
    mInString[0] = 0;
    std::random_device tDev;
    std::seed_seq tSeed{ tDev(), tDev(), tDev(), tDev(), tDev(), tDev() };
    mRandomGen.seed(tSeed);
    mRandomInt1.reset();
-   mRandomInt1.param(std::uniform_int_distribution<>::param_type(0, Some::gAlphaParms.mN1));
+   mRandomInt1.param(std::uniform_int_distribution<>::param_type(0, aN1));
    mRandomInt2.reset();
-   mRandomInt2.param(std::uniform_int_distribution<>::param_type(0, 18));
+   mRandomInt2.param(std::uniform_int_distribution<>::param_type(0, aN2));
 }
 
 //******************************************************************************
@@ -42,10 +40,10 @@ void TestAdd2::reset()
 //******************************************************************************
 // Run test.
 
-void TestAdd2::doTest()
+void TestAdd2::doTest(int aN1, int aN2)
 {
    printf("start\n");
-   reset();
+   reset(aN1, aN2);
 
    while (true)
    {
