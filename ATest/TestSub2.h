@@ -15,7 +15,7 @@
 // This class implements a general purpose shared storage object. It contains
 // status counters and flags.
 
-class TestAdd1
+class TestSub2
 {
 public:
 
@@ -41,7 +41,8 @@ public:
 
    // Random number generator for random timer delay.
    std::default_random_engine mRandomGen;
-   std::uniform_int_distribution<> mRandomInt;
+   std::uniform_int_distribution<> mRandomInt1;
+   std::uniform_int_distribution<> mRandomInt2;
 
    //***************************************************************************
    //***************************************************************************
@@ -49,11 +50,11 @@ public:
    // Methods:
 
    // Constructor.
-   TestAdd1();
-   void reset();
+   TestSub2();
+   void reset(int aN1, int aN2);
 
    // Tests.
-   void doTest();
+   void doTest(int aN1, int aN2);
 };
 
 //******************************************************************************
@@ -61,10 +62,10 @@ public:
 //******************************************************************************
 // Global instance
 
-#ifdef _TESTADD1_CPP_
-          TestAdd1 gTestAdd1;
+#ifdef _TESTSUB2_CPP_
+          TestSub2 gTestSub2;
 #else
-   extern TestAdd1 gTestAdd1;
+   extern TestSub2 gTestSub2;
 #endif
 
 //******************************************************************************

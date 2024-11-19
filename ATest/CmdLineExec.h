@@ -54,8 +54,8 @@ public:
 
    // Execute specific commands.
    void executeRun1(Ris::CmdLineCmd* aCmd);
-   void executeAdd1(Ris::CmdLineCmd* aCmd);
    void executeAdd2(Ris::CmdLineCmd* aCmd);
+   void executeSub2(Ris::CmdLineCmd* aCmd);
 
    void executeGo1(Ris::CmdLineCmd* aCmd);
    void executeGo2(Ris::CmdLineCmd* aCmd);

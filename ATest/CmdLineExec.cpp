@@ -8,8 +8,8 @@
 
 #include "someAlphaParms.h"
 #include "HTest.h"
-#include "TestAdd1.h"
 #include "TestAdd2.h"
+#include "TestSub2.h"
 #include "CmdLineExec.h"
 
 //******************************************************************************
@@ -38,8 +38,8 @@ void CmdLineExec::execute(Ris::CmdLineCmd* aCmd)
 {
    if(aCmd->isCmd("RESET"))   reset();
    if (aCmd->isCmd("RUN1"))   executeRun1(aCmd);
-   if (aCmd->isCmd("ADD1"))   executeAdd1(aCmd);
    if (aCmd->isCmd("ADD2"))   executeAdd2(aCmd);
+   if (aCmd->isCmd("SUB2"))   executeSub2(aCmd);
 
    if (aCmd->isCmd("GO1"))    executeGo1(aCmd);
    if (aCmd->isCmd("GO2"))    executeGo2(aCmd);
@@ -64,11 +64,6 @@ void CmdLineExec::executeRun1(Ris::CmdLineCmd* aCmd)
 //******************************************************************************
 //******************************************************************************
 
-void CmdLineExec::executeAdd1(Ris::CmdLineCmd* aCmd)
-{
-   gTestAdd1.doTest();
-}
-
 void CmdLineExec::executeAdd2(Ris::CmdLineCmd* aCmd)
 {
    aCmd->setArgDefault(1, 999);
@@ -77,6 +72,16 @@ void CmdLineExec::executeAdd2(Ris::CmdLineCmd* aCmd)
    int tN2 = aCmd->argInt(2);
    Prn::print(0, "Add2 %d %d", tN1, tN2);
    gTestAdd2.doTest(tN1, tN2);
+}
+
+void CmdLineExec::executeSub2(Ris::CmdLineCmd* aCmd)
+{
+   aCmd->setArgDefault(1, 999);
+   aCmd->setArgDefault(2, 999);
+   int tN1 = aCmd->argInt(1);
+   int tN2 = aCmd->argInt(2);
+   Prn::print(0, "Sub2 %d %d", tN1, tN2);
+   gTestSub2.doTest(tN1, tN2);
 }
 
 //******************************************************************************
