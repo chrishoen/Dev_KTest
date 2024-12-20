@@ -66,8 +66,8 @@ void CmdLineExec::executeRun1(Ris::CmdLineCmd* aCmd)
 
 void CmdLineExec::executeAdd2(Ris::CmdLineCmd* aCmd)
 {
-   aCmd->setArgDefault(1, 999);
-   aCmd->setArgDefault(2, 999);
+   aCmd->setArgDefault(1, 9999);
+   aCmd->setArgDefault(2, 9999);
    int tN1 = aCmd->argInt(1);
    int tN2 = aCmd->argInt(2);
    Prn::print(0, "Add2 %d %d", tN1, tN2);
@@ -76,8 +76,8 @@ void CmdLineExec::executeAdd2(Ris::CmdLineCmd* aCmd)
 
 void CmdLineExec::executeSub2(Ris::CmdLineCmd* aCmd)
 {
-   aCmd->setArgDefault(1, 999);
-   aCmd->setArgDefault(2, 999);
+   aCmd->setArgDefault(1, 9999);
+   aCmd->setArgDefault(2, 9999);
    int tN1 = aCmd->argInt(1);
    int tN2 = aCmd->argInt(2);
    Prn::print(0, "Sub2 %d %d", tN1, tN2);
