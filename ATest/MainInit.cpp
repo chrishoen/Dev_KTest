@@ -35,8 +35,8 @@ void main_initialize()
    // Read parameters files.
 
    // Read parms file.
-   Some::gAlphaParms.reset();
-   Some::gAlphaParms.readSection("default");
+// Some::gAlphaParms.reset();
+// Some::gAlphaParms.readSection("default");
 
    //***************************************************************************
    //***************************************************************************

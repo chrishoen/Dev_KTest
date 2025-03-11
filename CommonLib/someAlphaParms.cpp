@@ -38,8 +38,8 @@ void AlphaParms::reset()
       BaseClass::setFilePath("/opt/prime/files/Alpha_Parms.txt");
    }
 
-   mN1 = 0;
-   mN2 = 0;
+   mN1 = 99;
+   mN2 = 99;
 }
 
 //******************************************************************************
